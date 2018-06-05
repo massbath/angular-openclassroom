@@ -1,0 +1,14 @@
+<li [ngClass]="{'list-group-item':true,
+                'list-group-item-success' : isAllumer(),
+                'list-group-item-danger' : !isAllumer()
+                  }">
+
+  <h4 [ngStyle]="{color : getColor()}"> Appareil : {{appareilName}} -- Statut : {{ getStatus() }}
+    <button [ngClass]="{'btn':true,
+                        'btn-success' : !isAllumer(),
+                        'btn-danger' : isAllumer()
+                        }"
+             (click)="onSwitch()">{{isAllumer()?'Eteindre':'Allumer'}}</button>
+  </h4>
+  <input type="text" class="form-control" [(ngModel)]="appareilName">
+</li>
