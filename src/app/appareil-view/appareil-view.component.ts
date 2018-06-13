@@ -35,7 +35,13 @@ export class AppareilViewComponent implements OnInit,OnDestroy {
 
   };
 
+  onSave(){
+    this.appareilService.saveAppareilsToServer();
+  }
 
+  onFetch(){
+    this.appareilService.getAppareilsFromServer();
+  }
 
   constructor(private appareilService: AppareilService){
       setTimeout(()=>{
@@ -52,11 +58,11 @@ export class AppareilViewComponent implements OnInit,OnDestroy {
         }
       );
 
-      this.appareilService.emitAppareilSubject();
+      this.appareilService.getAppareilsFromServer();
     };
 
   ngOnDestroy(){
-      this.appareilSubscription.unsubscribe();  
+      this.appareilSubscription.unsubscribe();
     }
 
 }
